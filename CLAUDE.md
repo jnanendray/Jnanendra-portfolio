@@ -39,6 +39,7 @@ Built as part of the Bviate Solutions 37-Day Vibe Coder program.
 4. Merge once it looks right.
 
 ## Current status
-Day 5 (Roadmap): initial portfolio scaffold with Hero, Skills, and Projects
-(SmileCare Dental demo) sections. WhatsApp number and any additional projects
-to be added as the program continues.
+Projects section lists all five builds, newest first: Glowing Beauty Salon
+(full-stack booking platform + Android app), DoorStep Services, Jyothi Metal
+Artifacts, Prime Spaces Realty and SmileCare Dental. Skills include Supabase,
+RLS, GitHub Actions and Android (TWA). Project screenshots can be added later.
