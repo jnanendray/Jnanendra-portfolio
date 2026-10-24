@@ -69,6 +69,10 @@ const skills = [
   "Claude Code",
   "Git & GitHub",
   "Vercel",
+  "Supabase & PostgreSQL",
+  "Row-Level Security",
+  "GitHub Actions",
+  "Android Apps (TWA)",
   "n8n Automation",
   "Prompt Engineering",
 ];
@@ -103,11 +107,54 @@ type Project = {
   tags: string[];
   liveUrl: string;
   codeUrl?: string;
+  /** An extra link, e.g. the Android app download. */
+  extra?: { label: string; url: string };
+  /** Shown as a small label above the title. */
+  kind: string;
 };
 
+// Newest first.
 const projects: Project[] = [
   {
+    title: "Glowing Beauty Salon — Booking Platform + Android App",
+    kind: "Full-stack · Web + Android",
+    description:
+      "A complete salon booking system: Google and email sign-in, a step-by-step booking calendar with stylist choice and at-home visits (map pin + \"use my location\"), live chat, and an admin panel with day/week/month calendars, customers and a recall list. Supabase database with row-level security and server-side booking rules, plus an installable Android app with in-app updates. Lighthouse 100 across the board.",
+    tags: ["Next.js", "Supabase", "PostgreSQL + RLS", "Realtime chat", "Android (TWA)", "GitHub Actions"],
+    liveUrl: "https://glowing-beauty-salon.vercel.app",
+    codeUrl: "https://github.com/jnanendray/glowing-beauty-salon",
+    extra: { label: "Android app", url: "https://github.com/jnanendray/glowing-beauty-salon/releases/latest" },
+  },
+  {
+    title: "DoorStep Services — Home Services Booking",
+    kind: "Booking site",
+    description:
+      "A home-services site for AC repair, deep cleaning, salon at home, plumbing, electrical and painting. Customers pick a service and slot in a booking form that hands off to WhatsApp for confirmation, with how-it-works steps, testimonials and an FAQ.",
+    tags: ["Next.js", "Tailwind CSS", "WhatsApp booking", "Vercel"],
+    liveUrl: "https://doorstep-services.vercel.app",
+    codeUrl: "https://github.com/jnanendray/doorstep-services",
+  },
+  {
+    title: "Jyothi Metal Artifacts — Handcrafted Store",
+    kind: "Store / lead generation",
+    description:
+      "A storefront for handcrafted copper, brass and bronze utensils, pooja essentials, idols and decor. Featured products each have a one-tap WhatsApp enquiry, alongside trust points and an enquiry form — built for lead generation rather than checkout.",
+    tags: ["Next.js", "Tailwind CSS", "WhatsApp enquiries", "Vercel"],
+    liveUrl: "https://jyothi-metal-artifacts.vercel.app",
+    codeUrl: "https://github.com/jnanendray/jyothi-metal-artifacts",
+  },
+  {
+    title: "Prime Spaces Realty — Real Estate Listings",
+    kind: "Real estate",
+    description:
+      "A real-estate agency site for homes in Bengaluru: property listings from studios to penthouses, transparent pricing, why-choose-us highlights, and an enquiry form backed by an API route, plus WhatsApp click-to-chat.",
+    tags: ["Next.js", "TypeScript", "API routes", "Vercel"],
+    liveUrl: "https://prime-spaces-realty.vercel.app",
+    codeUrl: "https://github.com/jnanendray/prime-spaces-realty",
+  },
+  {
     title: "SmileCare Dental — Clinic Landing Page",
+    kind: "Landing page",
     description:
       "A conversion-focused landing page for a dental clinic: hero, services, pricing, patient reviews, an FAQ, a lead-capture form, and a one-tap WhatsApp button. Built with Next.js and Tailwind CSS, deployed on Vercel.",
     tags: ["Next.js", "Tailwind CSS", "Vercel"],
@@ -122,7 +169,7 @@ export function Projects() {
       <Container>
         <h2 className="text-2xl font-bold text-slate-900 md:text-3xl">Projects</h2>
         <p className="mt-2 max-w-2xl text-slate-600">
-          Live sites I&apos;ve built so far, each one shipped from scratch to production.
+          Live sites I&apos;ve built so far, each one shipped from scratch to production — newest first.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
@@ -130,7 +177,10 @@ export function Projects() {
               key={project.title}
               className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
             >
-              <h3 className="text-lg font-semibold text-slate-900">{project.title}</h3>
+              <p className="text-xs font-semibold uppercase tracking-wide text-teal-700">
+                {project.kind}
+              </p>
+              <h3 className="mt-1 text-lg font-semibold text-slate-900">{project.title}</h3>
               <p className="mt-2 flex-1 text-sm text-slate-600">{project.description}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
@@ -159,6 +209,16 @@ export function Projects() {
                     className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-slate-400 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
                   >
                     View code
+                  </a>
+                )}
+                {project.extra && (
+                  <a
+                    href={project.extra.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-slate-400 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+                  >
+                    {project.extra.label}
                   </a>
                 )}
               </div>
